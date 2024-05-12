@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chat Bot</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f2f2f2;
+    }
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
+    .chat-box {
+        padding: 20px;
+        height: 400px;
+        overflow-y: scroll;
+    }
+    .user-msg, .bot-msg {
+        margin-bottom: 15px;
+        padding: 10px 15px;
+        border-radius: 20px;
+        max-width: 70%;
+    }
+    .user-msg {
+        background-color: #007bff;
+        color: #fff;
+        align-self: flex-end;
+    }
+    .bot-msg {
+        background-color: #f0f0f0;
+        color: #333;
+        align-self: flex-start;
+    }
+    .input-box {
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid #ddd;
+    }
+    .input-box input[type="text"] {
+        flex: 1;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        margin-right: 10px;
+    }
+    .input-box button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        border: none;
+        color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="chat-box" id="chatBox">
+        <div class="bot-msg">Hello! How can I assist you today?</div>
+    </div>
+    <div class="input-box">
+        <input type="text" id="userInput" placeholder="Type your message...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+<script>
+    function sendMessage() {
+        var userInput = document.getElementById("userInput").value;
+        if (userInput !== "") {
+            var chatBox = document.getElementById("chatBox");
+            var userMsg = document.createElement("div");
+            userMsg.className = "user-msg";
+            userMsg.textContent = userInput;
+            chatBox.appendChild(userMsg);
+
+            // Simulating bot response
+            setTimeout(function() {
+                var botMsg = document.createElement("div");
+                botMsg.className = "bot-msg";
+                botMsg.textContent = "Sorry, Internal server issue.";
+                chatBox.appendChild(botMsg);
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }, 500);
+            
+            document.getElementById("userInput").value = "";
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+    }
+</script>
+</body>
+</html>
