@@ -6,7 +6,7 @@ dotenv.config();
 const API_KEY = process.env.API_KEY;
 
 //const genAI = new GoogleGenerativeAI(API_KEY);
-const genAI = new GoogleGenerativeAI("AIzaSyCg8j-ytBUwcqA2xNRrwzhtIUlmitXwccw");
+const genAI = new GoogleGenerativeAI("");
 
 async function getAns(prompt,budget){
     const model = genAI.getGenerativeModel({model:"gemini-pro"});
